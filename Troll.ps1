@@ -10,6 +10,9 @@
 $ImageName = "dont-be-suspicious"
 $MusicName = "dont-be-suspicious"
 
+$ImageUrl = "https://raw.githubusercontent.com/Onin42/flipper_zero/main/background.jpg?dl=1"
+$MusicUrl = "https://raw.githubusercontent.com/Onin42/flipper_zero/main/music.mp3?dl=1"
+
 
 #############################################################################################################################################
 
@@ -135,7 +138,7 @@ $WebClient = New-Object System.Net.WebClient
 
 #-- Set Wallpaper
  
-$WebClient.DownloadFile("https://img.hebus.com/tmp/hebus_2560x1440_1692890222_4305.jpg","$Env:USERPROFILE\Pictures\$ImageName.jpg")
+$WebClient.DownloadFile($ImageUrl,"$Env:USERPROFILE\Pictures\$ImageName.jpg")
 
 Start-Sleep -s 2
 
@@ -146,7 +149,7 @@ Set-WallPaper -Image "$Env:USERPROFILE\Pictures\$ImageName.jpg" -Style Center
 
 #-- Play Pornhub Intro
 
-$WebClient.DownloadFile("https://www.cjoint.com/doc/22_04/LDlpTsHovwB_Pornhub-intro-song.mp3","$Env:USERPROFILE\Music\$MusicName.mp3")
+$WebClient.DownloadFile($MusicUrl,"$Env:USERPROFILE\Music\$MusicName.mp3")
 
 Start-Sleep -s 2
 
